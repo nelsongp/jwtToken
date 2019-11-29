@@ -16,6 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.security.jwt.filters.JwtRequestFilter;
 
 @SuppressWarnings("deprecation")
+/*Se pone la notacion por que asi web security sabe que tiene que pasar por acá*/
 @EnableWebSecurity
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter{
 
@@ -27,6 +28,8 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		/*Aca se define los valores que se van a autenticar, en cada peticion que realice el authentication manager
+		 * pasara por el userdetail service para traer la informacion del usuario*/
 		auth.userDetailsService(myUserDetailService);
 		super.configure(auth);
 	}
@@ -48,7 +51,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter{
 		return super.authenticationManagerBean();
 	}
 
-
+	/*No se le hace ninguna codificacion extra a la contraseña que se le esta enviando*/
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return NoOpPasswordEncoder.getInstance();
