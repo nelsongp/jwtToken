@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.security.jwt.model.AuthenticationRequest;
 import com.security.jwt.model.AuthenticationResponse;
-import com.security.jwt.util.jwtUtil;
+import com.security.jwt.util.JwtUtil;
 
 @RestController
 public class HelloResource {
@@ -25,7 +25,7 @@ public class HelloResource {
 	private MyUserDetailService userDetailService;
 	
 	@Autowired
-	private jwtUtil jwtTokenUtil;
+	private JwtUtil jwtTokenUtil;
 
 	@RequestMapping({"/hello"})
 	public String hello() {
